@@ -1,0 +1,40 @@
+body{
+  width: 800px;
+}
+
+.tab_element{
+  /* width: 190px; */
+  float: left;
+  border-bottom: 1px dotted #cccccc;
+  padding: 5px 0 5px 0;
+}
+
+.key{
+  float: left;
+  width: 25px;
+  background: #666666;
+  color: #eeeeee;
+  text-align: center;
+  font-weight: bold;
+  padding: 3px 0;
+  margin: 0 5px 0 0;
+}
+
+.tab{
+  float: left;
+  /* width: 140px; */
+}
+
+.favicon{
+  vertical-align: middle;
+  margin: 0 5px 0 0;
+}
+
+.tab_title{
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.clear{
+  clear: both;
+}
