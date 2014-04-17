@@ -2,13 +2,15 @@ window.onload = function() {
   chrome.tabs.query({}, function(tabs){
 
     var keies = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    var tabIds = [];
+    var windowIds = [];
     var keyAssigns = [];
     var elements = '';
     var tabsCount = tabs.length;
     var titleLimit = '';
     var tabElements = '';
     var tabBlockElements = '';
+    var targetTabId = '';
+    var targetWindowId = '';
 
     if(tabsCount > 50){
       titleLimit = 8;
@@ -41,6 +43,7 @@ window.onload = function() {
       elements += '<div class="clear"></div>';
       elements += '</div>';
       keyAssigns[keies[i]] = tabs[i].id;
+      windowIds[tabs[i].id] = tabs[i].windowId;
     }
     document.getElementById('tab_list').innerHTML = elements;
 
@@ -57,10 +60,13 @@ window.onload = function() {
 
     window.addEventListener('keydown', function(e){
       if(e.shiftKey){
-        chrome.tabs.update(keyAssigns[String.fromCharCode(e.keyCode)], {selected: true});
+        targetTabId = keyAssigns[String.fromCharCode(e.keyCode)];
       }else{
-        chrome.tabs.update(keyAssigns[String.fromCharCode((e.keyCode)).toLowerCase()], {selected: true});
+        targetTabId = keyAssigns[String.fromCharCode((e.keyCode)).toLowerCase()];
       }
+      targetWindowId = windowIds[targetTabId];
+      chrome.tabs.update(targetTabId, {selected: true});
+      chrome.windows.update(targetWindowId, {focused: true});
     });
   });
 }
