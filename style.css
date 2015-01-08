@@ -3,7 +3,6 @@ body{
 }
 
 .tab_element{
-  /* width: 190px; */
   float: left;
   border-bottom: 1px dotted #cccccc;
   padding: 5px 0 5px 0;
@@ -22,7 +21,6 @@ body{
 
 .tab{
   float: left;
-  /* width: 140px; */
 }
 
 .favicon{
